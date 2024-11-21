@@ -6,6 +6,11 @@ import UiLib as UiLib
 UiLib.ToggleSwitchTemplate {
     id: control
 
+    backgroundColor: UiLib.Colors.darkColor
+    handleColor: UiLib.Colors.lightColor
+    infillColor: UiLib.Colors.darkColor
+    borderColor: UiLib.Colors.darkestColor
+
     property real radius: height * 0.5
     property real backgroundHeightDelta: 0.5
     property real knobHeightDelta: 0.85
@@ -44,7 +49,7 @@ UiLib.ToggleSwitchTemplate {
         }
         Rectangle {
             id: knob
-            x: radius < width * 0.5 ? -width * 0.1 : 0
+            x: minX
             y: parent.height * 0.5 - height * 0.5
             height: parent.height * control.knobHeightDelta
             width: height
@@ -57,25 +62,25 @@ UiLib.ToggleSwitchTemplate {
                     duration: 400
                 }
             }
+            property real minX: 0
+            property real maxX: background.width - width
+            property real minDragX: height > background.height ? -width * 0.2 : 0
+            property real maxDragX: height > background.height ? background.width - width
+                                                                 * 0.8 : background.width - width
+            property real middlePoint: background.width * 0.5 - width * 0.5
+
             MouseArea {
                 id: knobArea
                 anchors.fill: parent
                 drag.target: knob
                 drag.axis: Drag.XAxis
-                drag.minimumX: knob.height > background.height ? -width * 0.5 : 0
-                drag.maximumX: knob.height > background.height ? background.width - width
-                                                                 * 0.5 : background.width - width
-                property bool wasPressed: false
+                drag.minimumX: knob.minDragX
+                drag.maximumX: knob.maxDragX
                 onClicked: {
                     container.toggle()
                 }
-                onPressed: {
-                    wasPressed = true
-                }
                 onReleased: {
-                    if (wasPressed)
-                        container.releaseSwitch()
-                    wasPressed = false
+                    container.releaseSwitch()
                 }
             }
         }
@@ -84,8 +89,7 @@ UiLib.ToggleSwitchTemplate {
                 name: "on"
                 PropertyChanges {
                     target: knob
-                    x: knob.radius < knob.width
-                       * 0.5 ? background.width - knob.width * 0.9 : background.width - knob.width
+                    x: knob.maxX
                 }
                 PropertyChanges {
                     target: control
@@ -96,7 +100,7 @@ UiLib.ToggleSwitchTemplate {
                 name: "off"
                 PropertyChanges {
                     target: knob
-                    x: knob.radius < knob.width * 0.5 ? -knob.width * 0.1 : 0
+                    x: knob.minX
                 }
                 PropertyChanges {
                     target: control
@@ -120,22 +124,20 @@ UiLib.ToggleSwitchTemplate {
         function resetKnobPosition() {
             if (container.state === "off")
                 knob.x = Qt.binding(() => {
-                                        return knob.radius < knob.width
-                                        * 0.5 ? -knob.width * 0.1 : 0
+                                        return knob.minX
                                     })
             else if (container.state === "on")
                 knob.x = Qt.binding(() => {
-                                        return knob.radius < knob.width
-                                        * 0.5 ? background.width - knob.width * 0.9 : 0
+                                        return knob.maxX
                                     })
         }
 
         function releaseSwitch() {
-            if (knob.x <= background.width * 0.5 - knob.width * 0.5) {
+            if (knob.x < knob.middlePoint) {
                 if (container.state === "off")
                     return resetKnobPosition()
             }
-            if (knob.x > background.width * 0.5 - knob.width * 0.5) {
+            if (knob.x >= knob.middlePoint) {
                 if (container.state === "on")
                     return resetKnobPosition()
             }

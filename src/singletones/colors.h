@@ -4,6 +4,10 @@
 #include <QQmlEngine>
 #include <qquickitem.h>
 
+#ifndef UiColors
+#define UiColors UiLib::Colors::instance()
+#endif //UiColors
+
 namespace UiLib {
 /**
  * @brief The Colors class
@@ -35,7 +39,8 @@ public:
         ThemeTwo = 2,
         ThemeThree = 3,
         ThemeFour = 4,
-        ThemeFive = 5
+        ThemeFive = 5,
+        BlackAndWhite = 6
     };
 
     /**

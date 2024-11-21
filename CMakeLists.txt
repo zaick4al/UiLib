@@ -23,6 +23,7 @@ qt_add_qml_module(UiLib
     SOURCES
         src/singletones/icons.h src/singletones/icons.cpp
         src/singletones/colors.h src/singletones/colors.cpp
+        src/singletones/utils.h src/singletones/utils.cpp
 
         src/templates/control.h src./templates/control.cpp
         src/templates/controls/toggleswitch.h src/templates/controls/toggleswitch.cpp
@@ -104,6 +105,7 @@ target_include_directories(UiLib PUBLIC
     src/templates/
     src/qml/labels
     src/qml/controls
+    src/
 )
 
 target_include_directories(UiLib PRIVATE

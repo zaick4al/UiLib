@@ -52,6 +52,12 @@ Colors::Colors() : m_theme(ThemeOne),
             setLightColor(QColor::fromString("#82DDF0"));
             setLightestColor(QColor::fromString("#FCD7AD"));
             break;
+        case BlackAndWhite:
+            setDarkestColor(QColor::fromString("#121212"));
+            setDarkColor(QColor::fromString("#777777"));
+            setNeutralColor(QColor::fromString("#AAAAAA"));
+            setLightColor(QColor::fromString("#BDBDBD"));
+            setLightestColor(QColor::fromString("#F2F2F2"));
         };
     });
 }

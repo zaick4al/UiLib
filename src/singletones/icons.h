@@ -3,6 +3,10 @@
 
 #include <QQuickItem>
 
+#ifndef UiIcons
+#define UiIcons UiLib::Icons::instance()
+#endif //UiIcons
+
 namespace UiLib
 {
 class Icons : public QQuickItem
