@@ -24,17 +24,19 @@ class Colors : public QQuickItem
      * @accessors theme(), setTheme()
      */
     Q_PROPERTY(ColorTheme theme READ theme WRITE setTheme NOTIFY themeChanged FINAL)
+    Q_PROPERTY(QColor black READ black NOTIFY blackChanged FINAL)
     Q_PROPERTY(QColor darkest READ darkest NOTIFY darkestChanged FINAL)
     Q_PROPERTY(QColor dark READ dark NOTIFY darkChanged FINAL)
     Q_PROPERTY(QColor neutral READ neutral NOTIFY neutralChanged FINAL)
     Q_PROPERTY(QColor light READ light NOTIFY lightChanged FINAL)
     Q_PROPERTY(QColor lightest READ lightest NOTIFY lightestChanged FINAL)
+    Q_PROPERTY(QColor white READ white NOTIFY whiteChanged FINAL)
 public:
     /**
      * @brief The ColorTheme enum
      * Enum contains color theme
      */
-    enum ColorTheme{
+    enum ColorTheme {
         ThemeOne = 1,
         ThemeTwo = 2,
         ThemeThree = 3,
@@ -71,6 +73,13 @@ public:
     void setTheme(ColorTheme p_theme);
 
     /**
+     * @brief black
+     * Getter for black color
+     * @return QColor
+     */
+    QColor black() const;
+
+    /**
      * @brief darkest
      * Getter for first color
      * @return QColor
@@ -105,9 +114,23 @@ public:
      */
     QColor lightest() const;
 
+    /**
+     * @brief white
+     * Getter for white color
+     * @return QColor
+     */
+    QColor white() const;
 
 signals:
+    /**
+     * @private
+     */
     void themeChanged();
+
+    /**
+     * @private
+     */
+    void blackChanged();
 
     /**
      * @private
@@ -134,7 +157,17 @@ signals:
      */
     void lightestChanged();
 
+    /**
+     * @private
+     */
+    void whiteChanged();
+
 protected:
+    /**
+     * @private
+     */
+    void setBlack(const QColor &p_black);
+
     /**
      * @private
      */
@@ -160,11 +193,21 @@ protected:
      */
     void setLightest(const QColor &p_lightest);
 
+    /**
+    * private
+    */
+    void setWhite(const QColor &p_white);
+
 private:
     /**
      * @private
      */
     ColorTheme m_theme;
+
+    /**
+     * @private
+     */
+    QColor m_black;
 
     /**
      * @private
@@ -190,6 +233,11 @@ private:
      * @private
      */
     QColor m_lightest;
+
+    /**
+     * @private
+     */
+    QColor m_white;
 };
 
 } // namespace UiLib

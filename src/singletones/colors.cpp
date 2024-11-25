@@ -9,11 +9,13 @@ Colors &Colors::instance()
 }
 
 Colors::Colors() : m_theme(ThemeOne),
+    m_black(QColor::fromString("#080808")),
     m_darkest(QColor::fromString("#283D3B")),
     m_dark(QColor::fromString("#772E25")),
     m_neutral(QColor::fromString("#197278")),
     m_light(QColor::fromString("#C44536")),
-    m_lightest(QColor::fromString("#EDDDD4"))
+    m_lightest(QColor::fromString("#EDDDD4")),
+    m_white(QColor::fromString("#F2F2F2"))
 {
     connect(this, &Colors::themeChanged, this, [ = ]() {
         switch (theme()) {
@@ -57,7 +59,7 @@ Colors::Colors() : m_theme(ThemeOne),
             setDark(QColor::fromString("#777777"));
             setNeutral(QColor::fromString("#AAAAAA"));
             setLight(QColor::fromString("#BDBDBD"));
-            setLightest(QColor::fromString("#F2F2F2"));
+            setLightest(QColor::fromString("#D2D2D2"));
         };
     });
 }
@@ -73,6 +75,11 @@ void Colors::setTheme(ColorTheme p_theme)
         return;
     m_theme = p_theme;
     emit themeChanged();
+}
+
+QColor Colors::black() const
+{
+    return m_black;
 }
 
 QColor Colors::darkest() const
@@ -99,6 +106,19 @@ QColor Colors::light() const
 QColor Colors::lightest() const
 {
     return m_lightest;
+}
+
+QColor Colors::white() const
+{
+    return m_white;
+}
+
+void Colors::setBlack(const QColor &p_black)
+{
+    if (m_black == p_black)
+        return;
+    m_black = p_black;
+    emit blackChanged();
 }
 
 void Colors::setDarkest(const QColor &p_darkest)
@@ -139,6 +159,14 @@ void Colors::setLightest(const QColor &p_lightest)
         return;
     m_lightest = p_lightest;
     emit lightestChanged();
+}
+
+void Colors::setWhite(const QColor &p_white)
+{
+    if(m_white == p_white)
+        return;
+    m_white = p_white;
+    emit whiteChanged();
 }
 
 } // namespace UiLib
