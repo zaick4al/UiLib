@@ -40,7 +40,7 @@ jobs:
       - name: Check directory
         run: ls -l
       - name: Check dir contents
-        run: ls -l './public'
+        run: ls -l './UiLib'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
