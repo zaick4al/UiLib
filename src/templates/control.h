@@ -4,6 +4,10 @@
 #include <QQmlEngine>
 #include <QQuickItem>
 
+/**
+ * @brief The UiLib namespace
+ * @details Main namespace of whole library
+ */
 namespace UiLib {
 /**
  * @brief The Control class
