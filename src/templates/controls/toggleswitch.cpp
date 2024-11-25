@@ -12,16 +12,22 @@ ToggleSwitch::ToggleSwitch() :
     m_borderColor(Colors::instance().darkest())
 {}
 
+ToggleSwitch *ToggleSwitch::create(QQmlEngine *p_engine)
+{
+    auto toggleswitch = createFromModule(p_engine, "ToggleSwitch", "UiLib");
+    return qobject_cast<ToggleSwitch *>(toggleswitch);
+}
+
 bool ToggleSwitch::checked() const
 {
     return m_checked;
 }
 
-void ToggleSwitch::setChecked(bool newChecked)
+void ToggleSwitch::setChecked(bool p_checked)
 {
-    if (m_checked == newChecked)
+    if (m_checked == p_checked)
         return;
-    m_checked = newChecked;
+    m_checked = p_checked;
     emit checkedChanged();
 }
 
@@ -30,11 +36,11 @@ bool ToggleSwitch::tooltipEnabled() const
     return m_tooltipEnabled;
 }
 
-void ToggleSwitch::setTooltipEnabled(bool newTooltipEnabled)
+void ToggleSwitch::setTooltipEnabled(bool p_tooltipEnabled)
 {
-    if (m_tooltipEnabled == newTooltipEnabled)
+    if (m_tooltipEnabled == p_tooltipEnabled)
         return;
-    m_tooltipEnabled = newTooltipEnabled;
+    m_tooltipEnabled = p_tooltipEnabled;
     emit tooltipEnabledChanged();
 }
 
@@ -43,11 +49,11 @@ QString ToggleSwitch::tooltipText() const
     return m_tooltipText;
 }
 
-void ToggleSwitch::setTooltipText(const QString &newTooltipText)
+void ToggleSwitch::setTooltipText(const QString &p_tooltipText)
 {
-    if (m_tooltipText == newTooltipText)
+    if (m_tooltipText == p_tooltipText)
         return;
-    m_tooltipText = newTooltipText;
+    m_tooltipText = p_tooltipText;
     emit tooltipTextChanged();
 }
 
@@ -56,11 +62,11 @@ QColor ToggleSwitch::backgroundColor() const
     return m_backgroundColor;
 }
 
-void ToggleSwitch::setBackgroundColor(const QColor &newBackgroundColor)
+void ToggleSwitch::setBackgroundColor(const QColor &p_backgroundColor)
 {
-    if (m_backgroundColor == newBackgroundColor)
+    if (m_backgroundColor == p_backgroundColor)
         return;
-    m_backgroundColor = newBackgroundColor;
+    m_backgroundColor = p_backgroundColor;
     emit backgroundColorChanged();
 }
 
@@ -69,11 +75,11 @@ QColor ToggleSwitch::handleColor() const
     return m_handleColor;
 }
 
-void ToggleSwitch::setHandleColor(const QColor &newHandleColor)
+void ToggleSwitch::setHandleColor(const QColor &p_handleColor)
 {
-    if (m_handleColor == newHandleColor)
+    if (m_handleColor == p_handleColor)
         return;
-    m_handleColor = newHandleColor;
+    m_handleColor = p_handleColor;
     emit handleColorChanged();
 }
 
@@ -82,11 +88,11 @@ QColor ToggleSwitch::infillColor() const
     return m_infillColor;
 }
 
-void ToggleSwitch::setInfillColor(const QColor &newInfillColor)
+void ToggleSwitch::setInfillColor(const QColor &p_infillColor)
 {
-    if (m_infillColor == newInfillColor)
+    if (m_infillColor == p_infillColor)
         return;
-    m_infillColor = newInfillColor;
+    m_infillColor = p_infillColor;
     emit infillColorChanged();
 }
 
@@ -95,11 +101,11 @@ QColor ToggleSwitch::borderColor() const
     return m_borderColor;
 }
 
-void ToggleSwitch::setBorderColor(const QColor &newBorderColor)
+void ToggleSwitch::setBorderColor(const QColor &p_borderColor)
 {
-    if (m_borderColor == newBorderColor)
+    if (m_borderColor == p_borderColor)
         return;
-    m_borderColor = newBorderColor;
+    m_borderColor = p_borderColor;
     emit borderColorChanged();
 }
 

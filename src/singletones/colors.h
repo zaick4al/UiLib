@@ -11,7 +11,8 @@
 namespace UiLib {
 /**
  * @brief The Colors class
- * QML singleton width colors and changeable themes
+ * @details QML/C++ singleton with colors and changeable themes.
+ * Has definition for simpler use in C++: UiColors.
  */
 class Colors : public QQuickItem
 {
@@ -21,15 +22,50 @@ class Colors : public QQuickItem
     /**
      * @brief The ColorTheme property
      * Property that concludes color theme and changes them
-     * @accessors theme(), setTheme()
+     * @sa theme(), setTheme()
      */
     Q_PROPERTY(ColorTheme theme READ theme WRITE setTheme NOTIFY themeChanged FINAL)
+    /**
+     * @brief The black color property
+     * Property that concludes overall general color, which is slightly lighter than qt's default black color
+     * @sa black()
+     */
     Q_PROPERTY(QColor black READ black NOTIFY blackChanged FINAL)
+    /**
+     * @brief The darkest color property
+     * Property that concludes current theme's darkest color
+     * @sa darkest()
+     */
     Q_PROPERTY(QColor darkest READ darkest NOTIFY darkestChanged FINAL)
+    /**
+     * @brief The dark color property
+     * Property that concludes current theme's second to darkest color
+     * @sa dark()
+     */
     Q_PROPERTY(QColor dark READ dark NOTIFY darkChanged FINAL)
+    /**
+     * @brief The neutral color property
+     * Property that concludes current theme's in-between color
+     * @sa neutral()
+     */
     Q_PROPERTY(QColor neutral READ neutral NOTIFY neutralChanged FINAL)
+    /**
+     * @brief The light color property
+     * Property that concludes curent theme's second to lightest color
+     * @sa light()
+     */
     Q_PROPERTY(QColor light READ light NOTIFY lightChanged FINAL)
+    /**
+     * @brief The lightest color property
+     * Property that concludes current theme's lightest color
+     * @sa lightest()
+     */
     Q_PROPERTY(QColor lightest READ lightest NOTIFY lightestChanged FINAL)
+    /**
+     * @brief The white color property
+     * Property that concludes general white color, which is slightly darker than qt's default white color
+     * @sa white()
+     */
     Q_PROPERTY(QColor white READ white NOTIFY whiteChanged FINAL)
 public:
     /**
@@ -47,7 +83,8 @@ public:
 
     /**
      * @brief instance
-     * Static method that calls for singleton instance from cpp
+     * @details Access provider to global singletone instance.
+     * @warning You can use simpler version. Just write UiColors instead of UiLib::Colors::instance().
      * @return &Colors
      */
     static Colors &instance();

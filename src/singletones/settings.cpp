@@ -76,11 +76,11 @@ Common *Settings::common() const
     return m_common;
 }
 
-void Settings::setCommon(Common *newCommon)
+void Settings::setCommon(Common *p_common)
 {
-    if (m_common == newCommon)
+    if (m_common == p_common)
         return;
-    m_common = newCommon;
+    m_common = p_common;
     emit commonChanged();
 }
 
