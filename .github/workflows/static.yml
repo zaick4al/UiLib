@@ -37,6 +37,8 @@ jobs:
         run: sudo apt install doxygen && doxygen --version
       - name: Create documentation     
         run: doxygen 
+      - name: Check directory
+        run: ls -l
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
