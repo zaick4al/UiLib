@@ -35,12 +35,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install Doxygen
         run: sudo apt install doxygen && doxygen --version
+      - name: Install Graphviz
+        run: sudo apt install graphviz
       - name: Create documentation     
         run: doxygen 
-      - name: Check directory
-        run: ls -l
-      - name: Check dir contents
-        run: ls -l './public'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
