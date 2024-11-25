@@ -3,7 +3,7 @@
 #include <icons.h>
 namespace UiLib {
 
-Icon::Icon() : m_color(UiLib::Colors::instance().lightColor()),
+Icon::Icon() : m_color(UiLib::Colors::instance().light()),
     m_iconSource(UiLib::Icons::instance().accept())
 {}
 

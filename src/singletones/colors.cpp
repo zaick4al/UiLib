@@ -9,55 +9,55 @@ Colors &Colors::instance()
 }
 
 Colors::Colors() : m_theme(ThemeOne),
-    m_darkestColor(QColor::fromString("#283D3B")),
-    m_darkColor(QColor::fromString("#772E25")),
-    m_neutralColor(QColor::fromString("#197278")),
-    m_lightColor(QColor::fromString("#C44536")),
-    m_lightestColor(QColor::fromString("#EDDDD4"))
+    m_darkest(QColor::fromString("#283D3B")),
+    m_dark(QColor::fromString("#772E25")),
+    m_neutral(QColor::fromString("#197278")),
+    m_light(QColor::fromString("#C44536")),
+    m_lightest(QColor::fromString("#EDDDD4"))
 {
     connect(this, &Colors::themeChanged, this, [ = ]() {
         switch (theme()) {
         case ThemeOne:
-            setDarkestColor(QColor::fromString("#283D3B"));
-            setDarkColor(QColor::fromString("#772E25"));
-            setNeutralColor(QColor::fromString("#197278"));
-            setLightColor(QColor::fromString("#C44536"));
-            setLightestColor(QColor::fromString("#EDDDD4"));
+            setDarkest(QColor::fromString("#283D3B"));
+            setDark(QColor::fromString("#772E25"));
+            setNeutral(QColor::fromString("#197278"));
+            setLight(QColor::fromString("#C44536"));
+            setLightest(QColor::fromString("#EDDDD4"));
             break;
         case ThemeTwo:
-            setDarkestColor(QColor::fromString("#202030"));
-            setDarkColor(QColor::fromString("#39304A"));
-            setNeutralColor(QColor::fromString("#635C51"));
-            setLightColor(QColor::fromString("#7D7461"));
-            setLightestColor(QColor::fromString("#B0A990"));
+            setDarkest(QColor::fromString("#202030"));
+            setDark(QColor::fromString("#39304A"));
+            setNeutral(QColor::fromString("#635C51"));
+            setLight(QColor::fromString("#7D7461"));
+            setLightest(QColor::fromString("#B0A990"));
             break;
         case ThemeThree:
-            setDarkestColor(QColor::fromString("#38686A"));
-            setDarkColor(QColor::fromString("#187795"));
-            setNeutralColor(QColor::fromString("#2589BD"));
-            setLightColor(QColor::fromString("#A3B4A2"));
-            setLightestColor(QColor::fromString("#CDC6AE"));
+            setDarkest(QColor::fromString("#38686A"));
+            setDark(QColor::fromString("#187795"));
+            setNeutral(QColor::fromString("#2589BD"));
+            setLight(QColor::fromString("#A3B4A2"));
+            setLightest(QColor::fromString("#CDC6AE"));
             break;
         case ThemeFour:
-            setDarkestColor(QColor::fromString("#432818"));
-            setDarkColor(QColor::fromString("#6F1D1B"));
-            setNeutralColor(QColor::fromString("#99582A"));
-            setLightColor(QColor::fromString("#BB9457"));
-            setLightestColor(QColor::fromString("#FFE6A7"));
+            setDarkest(QColor::fromString("#432818"));
+            setDark(QColor::fromString("#6F1D1B"));
+            setNeutral(QColor::fromString("#99582A"));
+            setLight(QColor::fromString("#BB9457"));
+            setLightest(QColor::fromString("#FFE6A7"));
             break;
         case ThemeFive:
-            setDarkestColor(QColor::fromString("#A57548"));
-            setDarkColor(QColor::fromString("#5296A5"));
-            setNeutralColor(QColor::fromString("#F6C28B"));
-            setLightColor(QColor::fromString("#82DDF0"));
-            setLightestColor(QColor::fromString("#FCD7AD"));
+            setDarkest(QColor::fromString("#A57548"));
+            setDark(QColor::fromString("#5296A5"));
+            setNeutral(QColor::fromString("#F6C28B"));
+            setLight(QColor::fromString("#82DDF0"));
+            setLightest(QColor::fromString("#FCD7AD"));
             break;
         case BlackAndWhite:
-            setDarkestColor(QColor::fromString("#121212"));
-            setDarkColor(QColor::fromString("#777777"));
-            setNeutralColor(QColor::fromString("#AAAAAA"));
-            setLightColor(QColor::fromString("#BDBDBD"));
-            setLightestColor(QColor::fromString("#F2F2F2"));
+            setDarkest(QColor::fromString("#121212"));
+            setDark(QColor::fromString("#777777"));
+            setNeutral(QColor::fromString("#AAAAAA"));
+            setLight(QColor::fromString("#BDBDBD"));
+            setLightest(QColor::fromString("#F2F2F2"));
         };
     });
 }
@@ -75,70 +75,70 @@ void Colors::setTheme(ColorTheme p_theme)
     emit themeChanged();
 }
 
-QColor Colors::darkestColor() const
+QColor Colors::darkest() const
 {
-    return m_darkestColor;
+    return m_darkest;
 }
 
 
-QColor Colors::darkColor() const
+QColor Colors::dark() const
 {
-    return m_darkColor;
+    return m_dark;
 }
 
-QColor Colors::neutralColor() const
+QColor Colors::neutral() const
 {
-    return m_neutralColor;
+    return m_neutral;
 }
 
-QColor Colors::lightColor() const
+QColor Colors::light() const
 {
-    return m_lightColor;
+    return m_light;
 }
 
-QColor Colors::lightestColor() const
+QColor Colors::lightest() const
 {
-    return m_lightestColor;
+    return m_lightest;
 }
 
-void Colors::setDarkestColor(const QColor &p_darkestColor)
+void Colors::setDarkest(const QColor &p_darkest)
 {
-    if (m_darkestColor == p_darkestColor)
+    if (m_darkest == p_darkest)
         return;
-    m_darkestColor = p_darkestColor;
-    emit darkestColorChanged();
+    m_darkest = p_darkest;
+    emit darkestChanged();
 }
 
-void Colors::setDarkColor(const QColor &p_darkColor)
+void Colors::setDark(const QColor &p_dark)
 {
-    if (m_darkColor == p_darkColor)
+    if (m_dark == p_dark)
         return;
-    m_darkColor = p_darkColor;
-    emit darkColorChanged();
+    m_dark = p_dark;
+    emit darkChanged();
 }
 
-void Colors::setNeutralColor(const QColor &p_neutralColor)
+void Colors::setNeutral(const QColor &p_neutral)
 {
-    if (m_neutralColor == p_neutralColor)
+    if (m_neutral == p_neutral)
         return;
-    m_neutralColor = p_neutralColor;
-    emit neutralColorChanged();
+    m_neutral = p_neutral;
+    emit neutralChanged();
 }
 
-void Colors::setLightColor(const QColor &p_lightColor)
+void Colors::setLight(const QColor &p_light)
 {
-    if (m_lightColor == p_lightColor)
+    if (m_light == p_light)
         return;
-    m_lightColor = p_lightColor;
-    emit lightColorChanged();
+    m_light = p_light;
+    emit lightChanged();
 }
 
-void Colors::setLightestColor(const QColor &p_lightestColor)
+void Colors::setLightest(const QColor &p_lightest)
 {
-    if (m_lightestColor == p_lightestColor)
+    if (m_lightest == p_lightest)
         return;
-    m_lightestColor = p_lightestColor;
-    emit lightestColorChanged();
+    m_lightest = p_lightest;
+    emit lightestChanged();
 }
 
 } // namespace UiLib

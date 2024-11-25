@@ -6,10 +6,10 @@ namespace UiLib {
 ToggleSwitch::ToggleSwitch() :
     m_checked(false),
     m_tooltipEnabled(false),
-    m_backgroundColor(Colors::instance().darkColor()),
-    m_handleColor(Colors::instance().lightColor()),
-    m_infillColor(Colors::instance().darkColor()),
-    m_borderColor(Colors::instance().darkestColor())
+    m_backgroundColor(Colors::instance().dark()),
+    m_handleColor(Colors::instance().light()),
+    m_infillColor(Colors::instance().dark()),
+    m_borderColor(Colors::instance().darkest())
 {}
 
 bool ToggleSwitch::checked() const

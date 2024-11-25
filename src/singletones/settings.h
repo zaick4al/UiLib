@@ -9,36 +9,35 @@ namespace UiLib {
 class Common : public QObject{
     Q_OBJECT
     Q_PROPERTY(qreal spacing READ spacing WRITE setSpacing NOTIFY spacingChanged FINAL)
-    Q_PROPERTY(qreal standartHeight READ standartHeight WRITE setStandartHeight NOTIFY standartHeightChanged FINAL)
-    Q_PROPERTY(qreal standartWidth READ standartWidth WRITE setStandartWidth NOTIFY standartWidthChanged FINAL)
-    Q_PROPERTY(qreal standartRadius READ standartRadius WRITE setStandartRadius NOTIFY standartRadiusChanged FINAL)
+    Q_PROPERTY(qreal height READ height WRITE setHeight NOTIFY heightChanged FINAL)
+    Q_PROPERTY(qreal width READ width WRITE setWidth NOTIFY widthChanged FINAL)
+    Q_PROPERTY(qreal radius READ radius WRITE setRadius NOTIFY radiusChanged FINAL)
 public:
     explicit Common(QObject *parent = nullptr);
 
     qreal spacing() const;
     void setSpacing(qreal newSpacing);
 
-    qreal standartHeight() const;
-    void setStandartHeight(qreal newStandartHeight);
+    qreal height() const;
+    void setHeight(qreal newStandartHeight);
 
-    qreal standartWidth() const;
-    void setStandartWidth(qreal newStandartWidth);
+    qreal width() const;
+    void setWidth(qreal newStandartWidth);
 
-    qreal standartRadius() const;
-    void setStandartRadius(qreal newStandartRadius);
+    qreal radius() const;
+    void setRadius(qreal newStandartRadius);
 
 signals:
     void spacingChanged();
-    void standartHeightChanged();
-    void standartWidthChanged();
-
-    void standartRadiusChanged();
+    void heightChanged();
+    void widthChanged();
+    void radiusChanged();
 
 private:
     qreal m_spacing;
-    qreal m_standartHeight;
-    qreal m_standartWidth;
-    qreal m_standartRadius;
+    qreal m_height;
+    qreal m_width;
+    qreal m_radius;
 };
 
 class Settings : public QObject

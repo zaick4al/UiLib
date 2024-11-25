@@ -3,9 +3,9 @@
 namespace UiLib {
 
 Common::Common(QObject *parent) : m_spacing(0),
-    m_standartHeight(0),
-    m_standartWidth(0),
-    m_standartRadius(0)
+    m_height(0),
+    m_width(0),
+    m_radius(0)
 {}
 
 qreal Common::spacing() const
@@ -13,51 +13,51 @@ qreal Common::spacing() const
     return m_spacing;
 }
 
-void Common::setSpacing(qreal newSpacing)
+void Common::setSpacing(qreal p_spacing)
 {
-    if (qFuzzyCompare(m_spacing, newSpacing))
+    if (qFuzzyCompare(m_spacing, p_spacing))
         return;
-    m_spacing = newSpacing;
+    m_spacing = p_spacing;
     emit spacingChanged();
 }
 
-qreal Common::standartHeight() const
+qreal Common::height() const
 {
-    return m_standartHeight;
+    return m_height;
 }
 
-void Common::setStandartHeight(qreal newStandartHeight)
+void Common::setHeight(qreal p_height)
 {
-    if (qFuzzyCompare(m_standartHeight, newStandartHeight))
+    if (qFuzzyCompare(m_height, p_height))
         return;
-    m_standartHeight = newStandartHeight;
-    emit standartHeightChanged();
+    m_height = p_height;
+    emit heightChanged();
 }
 
-qreal Common::standartWidth() const
+qreal Common::width() const
 {
-    return m_standartWidth;
+    return m_width;
 }
 
-void Common::setStandartWidth(qreal newStandartWidth)
+void Common::setWidth(qreal p_width)
 {
-    if (qFuzzyCompare(m_standartWidth, newStandartWidth))
+    if (qFuzzyCompare(m_width, p_width))
         return;
-    m_standartWidth = newStandartWidth;
-    emit standartWidthChanged();
+    m_width = p_width;
+    emit widthChanged();
 }
 
-qreal Common::standartRadius() const
+qreal Common::radius() const
 {
-    return m_standartRadius;
+    return m_radius;
 }
 
-void Common::setStandartRadius(qreal newStandartRadius)
+void Common::setRadius(qreal p_radius)
 {
-    if (qFuzzyCompare(m_standartRadius, newStandartRadius))
+    if (qFuzzyCompare(m_radius, p_radius))
         return;
-    m_standartRadius = newStandartRadius;
-    emit standartRadiusChanged();
+    m_radius = p_radius;
+    emit radiusChanged();
 }
 
 Settings::Settings(QObject *parent)

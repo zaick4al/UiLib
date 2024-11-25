@@ -24,11 +24,11 @@ class Colors : public QQuickItem
      * @accessors theme(), setTheme()
      */
     Q_PROPERTY(ColorTheme theme READ theme WRITE setTheme NOTIFY themeChanged FINAL)
-    Q_PROPERTY(QColor darkestColor READ darkestColor NOTIFY darkestColorChanged FINAL)
-    Q_PROPERTY(QColor darkColor READ darkColor NOTIFY darkColorChanged FINAL)
-    Q_PROPERTY(QColor neutralColor READ neutralColor NOTIFY neutralColorChanged FINAL)
-    Q_PROPERTY(QColor lightColor READ lightColor NOTIFY lightColorChanged FINAL)
-    Q_PROPERTY(QColor lightestColor READ lightestColor NOTIFY lightestColorChanged FINAL)
+    Q_PROPERTY(QColor darkest READ darkest NOTIFY darkestChanged FINAL)
+    Q_PROPERTY(QColor dark READ dark NOTIFY darkChanged FINAL)
+    Q_PROPERTY(QColor neutral READ neutral NOTIFY neutralChanged FINAL)
+    Q_PROPERTY(QColor light READ light NOTIFY lightChanged FINAL)
+    Q_PROPERTY(QColor lightest READ lightest NOTIFY lightestChanged FINAL)
 public:
     /**
      * @brief The ColorTheme enum
@@ -71,39 +71,39 @@ public:
     void setTheme(ColorTheme p_theme);
 
     /**
-     * @brief darkestColor
+     * @brief darkest
      * Getter for first color
      * @return QColor
      */
-    QColor darkestColor() const;
+    QColor darkest() const;
 
     /**
-     * @brief darkColor
+     * @brief dark
      * Getter for second color
      * @return QColor
      */
-    QColor darkColor() const;
+    QColor dark() const;
 
     /**
-     * @brief neutralColor
+     * @brief neutral
      * Getter for third color
      * @return QColor
      */
-    QColor neutralColor() const;
+    QColor neutral() const;
 
     /**
-     * @brief lightColor
+     * @brief light
      * Getter for fourth color
      * @return QColor
      */
-    QColor lightColor() const;
+    QColor light() const;
 
     /**
-     * @brief lightestColor
+     * @brief lightest
      * Getter for fifth color
      * @return QColor
      */
-    QColor lightestColor() const;
+    QColor lightest() const;
 
 
 signals:
@@ -112,53 +112,53 @@ signals:
     /**
      * @private
      */
-    void darkestColorChanged();
+    void darkestChanged();
 
     /**
      * @private
      */
-    void darkColorChanged();
+    void darkChanged();
 
     /**
      * @private
      */
-    void neutralColorChanged();
+    void neutralChanged();
 
     /**
      * @private
      */
-    void lightColorChanged();
+    void lightChanged();
 
     /**
      * @private
      */
-    void lightestColorChanged();
+    void lightestChanged();
 
 protected:
     /**
      * @private
      */
-    void setDarkestColor(const QColor &p_darkestColor);
+    void setDarkest(const QColor &p_darkest);
 
     /**
      * @private
      */
-    void setDarkColor(const QColor &p_darkColor);
+    void setDark(const QColor &p_dark);
 
     /**
      * @private
      */
-    void setNeutralColor(const QColor &p_neutralColor);
+    void setNeutral(const QColor &p_neutral);
 
     /**
      * @private
      */
-    void setLightColor(const QColor &p_lightColor);
+    void setLight(const QColor &p_light);
 
     /**
      * @private
      */
-    void setLightestColor(const QColor &p_lightestColor);
+    void setLightest(const QColor &p_lightest);
 
 private:
     /**
@@ -169,27 +169,27 @@ private:
     /**
      * @private
      */
-    QColor m_darkestColor;
+    QColor m_darkest;
 
     /**
      * @private
      */
-    QColor m_darkColor;
+    QColor m_dark;
 
     /**
      * @private
      */
-    QColor m_neutralColor;
+    QColor m_neutral;
 
     /**
      * @private
      */
-    QColor m_lightColor;
+    QColor m_light;
 
     /**
      * @private
      */
-    QColor m_lightestColor;
+    QColor m_lightest;
 };
 
 } // namespace UiLib
