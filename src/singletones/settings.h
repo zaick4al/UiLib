@@ -151,7 +151,10 @@ private:
      */
     qreal m_radius;
 };
-
+/**
+ * @brief The ButtonProp class
+ * @details General properties of qml buttons
+ */
 class ButtonProp  : public QObject
 {
     friend class Settings;
