@@ -21,10 +21,12 @@ class Utils : public QQuickItem
     QML_SINGLETON
 public:
     /**
-     * @private
+     * @brief create
+     * @param QQmlEngine *p_qmlEngine
+     * @param QJSEngine *p_jsEngine
+     * @return Utils *
      */
-    Utils();
-
+    static Utils *create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine);
     /**
      * @brief instance
      * @details Access provider to global singletone instance.
@@ -32,8 +34,21 @@ public:
      * @return &Utils
      */
     static Utils &instance();
-
+    /**
+     * @brief blendColors
+     * @param QColor p_firstColor
+     * @param QColor p_secondColor
+     * @param int p_mixStrength
+     * @return QColor
+     * @details Mixes colors with set mixture strength, returns mixed color
+     */
     Q_INVOKABLE QColor blendColors(QColor p_firstColor, QColor p_secondColor, int p_mixStrength);
+
+protected:
+    /**
+     * @private
+     */
+    Utils();
 
 };
 

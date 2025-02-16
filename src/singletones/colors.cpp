@@ -1,4 +1,5 @@
 #include "colors.h"
+#include <QQmlEngine>
 
 namespace UiLib {
 
@@ -6,6 +7,11 @@ Colors &Colors::instance()
 {
     static Colors colorsInstance;
     return colorsInstance;
+}
+
+Colors *Colors::create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine)
+{
+    return &UiColors;
 }
 
 Colors::Colors() : m_theme(ThemeOne),
@@ -17,6 +23,7 @@ Colors::Colors() : m_theme(ThemeOne),
     m_lightest(QColor::fromString("#EDDDD4")),
     m_white(QColor::fromString("#F2F2F2"))
 {
+    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
     connect(this, &Colors::themeChanged, this, [ = ]() {
         switch (theme()) {
         case ThemeOne:

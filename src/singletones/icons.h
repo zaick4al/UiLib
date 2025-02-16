@@ -206,13 +206,12 @@ public:
      */
     Icons();
     /**
-     * @private
+     * @brief create
+     * @param QQmlEngine *p_qmlEngine
+     * @param QJSEngine *p_jsEngine
+     * @return Icons *
      */
-    Icons(Icons &&) = delete;
-    /**
-     * @private
-     */
-    Icons &operator=(Icons &&) = delete;
+    static Icons *create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine);
 
     /**
      * @brief instance

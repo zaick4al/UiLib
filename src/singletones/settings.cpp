@@ -63,7 +63,14 @@ void Common::setRadius(qreal p_radius)
 Settings::Settings(QObject *parent)
     : QObject{parent},
       m_common(new Common(this))
-{}
+{
+    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
+}
+
+Settings *Settings::create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine)
+{
+    return &UiSettings;
+}
 
 Settings &Settings::instance()
 {
@@ -82,6 +89,58 @@ void Settings::setCommon(Common *p_common)
         return;
     m_common = p_common;
     emit commonChanged();
+}
+
+qreal ButtonProp::height() const
+{
+    return m_height;
+}
+
+void ButtonProp::setHeight(qreal p_height)
+{
+    if (qFuzzyCompare(m_height, p_height))
+        return;
+    m_height = p_height;
+    emit heightChanged();
+}
+
+qreal ButtonProp::width() const
+{
+    return m_width;
+}
+
+void ButtonProp::setWidth(qreal p_width)
+{
+    if (qFuzzyCompare(m_width, p_width))
+        return;
+    m_width = p_width;
+    emit widthChanged();
+}
+
+qreal ButtonProp::radius() const
+{
+    return m_radius;
+}
+
+void ButtonProp::setRadius(qreal p_radius)
+{
+    if (qFuzzyCompare(m_radius, p_radius))
+        return;
+    m_radius = p_radius;
+    emit radiusChanged();
+}
+
+ButtonProp *Settings::buttonProp() const
+{
+    return m_buttonProp;
+}
+
+void Settings::setButtonProp(ButtonProp *p_buttonProp)
+{
+    if (m_buttonProp == p_buttonProp)
+        return;
+    m_buttonProp = p_buttonProp;
+    emit buttonPropChanged();
 }
 
 } // namespace UiLib

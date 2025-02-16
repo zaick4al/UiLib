@@ -1,8 +1,17 @@
 #include "utils.h"
+#include <QQmlEngine>
 
 namespace UiLib {
 
-Utils::Utils() {}
+Utils::Utils()
+{
+    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
+}
+
+Utils *Utils::create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine)
+{
+    return &UiUtils;
+}
 
 Utils &Utils::instance()
 {

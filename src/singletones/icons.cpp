@@ -1,4 +1,5 @@
 #include "icons.h"
+#include <QQmlEngine>
 
 namespace UiLib {
 Icons::Icons() : m_accept(QUrl("qrc:/UiLib/resources/icons/accept.svg")),
@@ -46,7 +47,14 @@ Icons::Icons() : m_accept(QUrl("qrc:/UiLib/resources/icons/accept.svg")),
     m_key(QUrl("qrc:/UiLib/resources/icons/key.svg")),
     m_pentagram(QUrl("qrc:/UiLib/resources/icons/pentagram.svg")),
     m_spellbook(QUrl("qrc:/UiLib/resources/icons/spellbook.svg"))
-{}
+{
+    QQmlEngine::setObjectOwnership(this, QQmlEngine::CppOwnership);
+}
+
+Icons *Icons::create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine)
+{
+    return &UiIcons;
+}
 
 Icons &Icons::instance()
 {

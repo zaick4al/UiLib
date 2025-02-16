@@ -1,7 +1,6 @@
 #ifndef UILIB_COLORS_H
 #define UILIB_COLORS_H
 
-#include <QQmlEngine>
 #include <qquickitem.h>
 
 #ifndef UiColors
@@ -88,7 +87,13 @@ public:
      * @return &Colors
      */
     static Colors &instance();
-
+    /**
+     * @brief create
+     * @param QQmlEngine *p_qmlEngine
+     * @param QJSEngine *p_jsEngine
+     * @return Colors *
+     */
+    static Colors *create(QQmlEngine *p_qmlEngine, QJSEngine *p_jsEngine);
     /**
      * @brief Colors
      * Constructor
