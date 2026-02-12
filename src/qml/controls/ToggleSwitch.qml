@@ -3,6 +3,7 @@ import QtQuick.Effects
 import QtQuick.Controls.Universal as Universal
 import UiLib as UiLib
 
+
 UiLib.ToggleSwitchTemplate {
     id: control
 

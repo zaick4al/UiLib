@@ -80,6 +80,8 @@ public:
         BlackAndWhite = 6
     };
 
+    Q_ENUM(ColorTheme)
+
     /**
      * @brief instance
      * @details Access provider to global singletone instance.

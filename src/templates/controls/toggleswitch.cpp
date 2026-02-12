@@ -10,7 +10,9 @@ ToggleSwitch::ToggleSwitch() :
     m_handleColor(Colors::instance().light()),
     m_infillColor(Colors::instance().dark()),
     m_borderColor(Colors::instance().darkest())
-{}
+{
+    setFlag(ItemHasContents, true);
+}
 
 ToggleSwitch *ToggleSwitch::create(QQmlEngine *p_engine)
 {
